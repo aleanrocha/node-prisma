@@ -18,5 +18,5 @@ model User {
   email   String   @unique
   name    String
   job     String
-  age     Int
+  gender  String
 }

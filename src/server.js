@@ -28,8 +28,8 @@ server.get('/users', async (_req, res) => {
 // create new user
 server.post('/users', async (req, res) => {
   try {
-    const { email, name, job, age } = req.body
-    if ((!email, !name, !job, !age)) {
+    const { email, name, job, gender } = req.body
+    if ((!email, !name, !job, !gender)) {
       return res
         .status(400)
         .json({ message: 'Some required fields are missing.' })
@@ -39,7 +39,7 @@ server.post('/users', async (req, res) => {
         email,
         name,
         job,
-        age,
+        gender,
       },
     }
     await prisma.user.create(userData)
@@ -53,8 +53,8 @@ server.post('/users', async (req, res) => {
 // update user by ID
 server.put('/users/:id', async (req, res) => {
   try {
-    const { email, name, job, age } = req.body
-    if ((!email, !name, !job, !age)) {
+    const { email, name, job, gender } = req.body
+    if ((!email, !name, !job, !gender)) {
       return res
         .status(400)
         .json({ message: 'Some required fields are missing.' })
@@ -67,7 +67,7 @@ server.put('/users/:id', async (req, res) => {
         email,
         name,
         job,
-        age,
+        gender,
       },
     }
     await prisma.user.update(userData)
