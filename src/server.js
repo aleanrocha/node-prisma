@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import { PrismaClient } from '@prisma/client'
 
 const server = express()
@@ -7,6 +8,7 @@ const prisma = new PrismaClient()
 const port = 3001
 
 server.use(express.json())
+server.use(cors())
 
 server.get('/', (_req, res) => {
   return res.status(200).json({ message: 'Hello World 🌎' })
