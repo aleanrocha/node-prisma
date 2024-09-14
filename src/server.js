@@ -5,7 +5,7 @@ import { PrismaClient } from '@prisma/client'
 const server = express()
 const prisma = new PrismaClient()
 
-const port = 3001
+const port = process.env.PORT || 3001
 
 server.use(express.json())
 server.use(cors())
