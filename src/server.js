@@ -34,6 +34,12 @@ server.post('/users', async (req, res) => {
         .status(400)
         .json({ message: 'Some required fields are missing.' })
     }
+    const user = await prisma.user.findUnique({ where: { email } })
+    if (user) {
+      return res
+        .status(409)
+        .json({ message: 'Email already in use.' })
+    }
     const userData = {
       data: {
         email,
